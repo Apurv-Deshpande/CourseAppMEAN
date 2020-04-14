@@ -63,15 +63,8 @@ exports.updateCourse =
 
 
   (req, res) => {
-    const course = new Course({
-      title: req.body.title,
 
-      published: req.body.published,
-      tags: req.body.tags.split(","),
-      youtube: req.body.youtube,
-      creator: req.userData.userId
-    });
-    Course.updateOne({ _id: req.params.id, creator: req.userData.userId }, course)
+    Course.updateOne({ _id: req.params.id, creator: req.userData.userId }, req.body)
       .then(result => {
         if (result.n > 0) {
           res.status(200).json({ message: "Update successful!" });

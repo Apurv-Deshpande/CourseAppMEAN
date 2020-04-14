@@ -55,9 +55,9 @@ export class EditCoursesComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.updateCourses(this._id, this.coursesForm.value)
       .subscribe((res: any) => {
-        const id = res._id;
+
         this.isLoadingResults = false;
-        this.router.navigate(['/courses-details', id]);
+        this.router.navigate(['/courses',]);
       }, (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
